@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <Nav/>
-  </div>
+  <Layout>
+    Labels
+  </Layout>
 </template>
 
 <script lang="ts">
