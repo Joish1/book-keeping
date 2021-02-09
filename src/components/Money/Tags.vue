@@ -6,7 +6,7 @@
     <ul class="current">
       <li v-for="tag in dataSource" :key="tag.id"
           :class="{selected: selectedTags.indexOf(tag)>=0}"
-          @click="toggle(tag)">{{ tag }}
+          @click="toggle(tag)">{{ tag.name }}
       </li>
     </ul>
   </div>
@@ -18,8 +18,8 @@ import Vue from 'vue';
 import {Component, Prop} from 'vue-property-decorator';
 
 @Component
-export default class Types extends Vue {
-  @Prop(Array) readonly dataSource: string[] | undefined;
+export default class Tags extends Vue {
+  @Prop() readonly dataSource: string[] | undefined;
   selectedTags: string[] = [];
 
   toggle(tag: string) {
@@ -29,7 +29,7 @@ export default class Types extends Vue {
     } else {
       this.selectedTags.push(tag);
     }
-    this.$emit('update:selected', this.selectedTags);
+    this.$emit('update:value', this.selectedTags);
   }
 
   create() {
@@ -45,6 +45,7 @@ export default class Types extends Vue {
 
 <style lang="scss" scoped>
 .tags {
+  background: white;
   font-size: 14px;
   padding: 16px;
   flex-grow: 1;
